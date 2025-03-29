@@ -1,0 +1,99 @@
+---
+import { Code } from "astro:components";
+
+const code = `interface Developer {
+    name: string;
+    skills: string[];
+    interests: string[];
+};
+
+interface Stack {
+    backend: string[];
+    frontend: string[];
+};
+
+type ContactType = "email" | "linkedin" | "github";
+
+const stack: Stack = {
+    backend: [
+    "Node.js",
+    "Express",
+    "PostgreSQL",
+    "MySQL",
+    "MongoDB"
+    ],
+    frontend: [
+    "SCSS",
+    "JavaScript",
+    "React",
+    "TypeScript",
+    "TailwindCSS",
+    "Astro"
+    ]
+};
+
+// Developer information
+const me: Developer = {
+    name: "Bernardo Marozzi",
+    skills: [
+        ...stack.backend,
+        ...stack.frontend
+    ],
+    interests: [
+        "Open Source",
+        "Security",
+        "Performance",
+        "Web Accessibility"
+        "Privacy",
+        "Cloud Architecture",
+        "SEO"
+        "Self-hosting"
+    ]
+};
+
+// Contact information
+const contact = (type: ContactType): string => {
+    switch (type) {
+        case 'github':
+          return 'https://github.com/EmeTeBe';
+        case 'linkedin':
+          return 'https://www.linkedin.com/in/bernardo-marozzi07/';
+        case 'email':
+          return 'bernimarozzi@gmail.com';
+        default:
+          return 'Send fax';
+  }
+};
+
+`;
+---
+
+<Code
+  code={code}
+  lang="typescript"
+  wrap={true}
+/>
+
+<style is:global>
+
+  pre.astro-code {
+    @apply bg-transparent !important;
+  }
+
+  pre.astro-code code {
+    @apply block;
+    counter-reset: step;
+    counter-increment: step 0;
+  }
+
+  pre.astro-code code .line {
+    @apply relative;
+  }
+
+  pre.astro-code code .line::before {
+    content: counter(step);
+    counter-increment: step;
+    @apply text-gray-600 pr-2;
+  }
+
+</style>

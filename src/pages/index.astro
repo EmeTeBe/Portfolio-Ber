@@ -1,11 +1,118 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentAbout from '../components/ContentAbout.astro';
+import Profile from '../components/Profile.astro';
+import Contact from '../components/Contact.astro';
+import ContentTab from '../components/ContentTab.astro';
+import Projects from '../components/Projects.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title="Portfolio de Bernardo" description="Este es mi portfolio personal en Astro, como desarrollador web">
+
+
+	<main class="flex flex-col md:flex-row w-full max-w-full md:max-w-7xl border border-gray-600 rounded-2xl overflow-hidden shadow-2xl relative bg-black mb-12 md:mb-4">
+
+
+		<div class="p-8 md:p-6 flex flex-col justify-between md:w-2/5 border-b md:border-b-0 md:border-r border-gray-600">
+			
+			<Profile />
+
+			<Contact />
+		
+		</div>
+	
+		<!-- Start rigth area -->
+		<div class="w-full md:w-4/5 p-0">
+
+			<!-- Start wrapper -->
+			<div class="min-h-full h-[90vh] overflow-y-scroll flex flex-col">
+				
+				<!-- Hidden bottons to control the tabs -->
+				<div class="input-tabs">
+
+					<input 
+					type="radio"
+					id="tab1"
+					name="tabs"
+					class="hidden"
+					checked
+					/>
+
+					<input 
+					type="radio"
+					id="tab2"
+					name="tabs"
+					class="hidden"
+					/>
+
+					<div class="flex border-b border-gray-600 bg-black sticky top-0 z-10">
+						<ContentTab
+							contentId="tab1"
+							contentName="About.ts"
+						/>
+
+						<ContentTab
+							contentId="tab2"
+							contentName="Projects.md"
+						/>
+
+					</div>
+
+					<div class="p-6 flex-grow overflow-y-auto bg-black">
+
+						<div id="content1" class="tab-content">
+							<ContentAbout />
+						</div>
+
+						<div id="content2" class="tab-content">
+							<Projects />
+						</div>
+
+					</div>
+					
+				</div>
+				
+			</div>
+			<!-- End wrapper -->
+		
+		</div>
+		<!-- End right area -->
+
+	</main>
+
+	<div class="fixed md:absolute bottom-0 left-0 right-0 w-full text-center py-2 bg-black">
+		Built with <a href="https://astro.build" title="Astro" target="_blank" class="text-primary hover:underline">Astro</a> reference by <a href="https://devidev.io/" target="_blank" class="text-primary hover:underline">devi|dev|io</a>
+	</div>
+
+
+</BaseLayout>
+
+<style is:global>
+
+	.tab-content {
+		@apply hidden opacity-0;
+		transition: opacity 0.3s ease-in-out;
+	}
+
+	.tab-lab {
+		@apply border-b-2 border-transparent bg-transparent;
+		transition: background-color 0.2s ease-in-out;
+	}
+
+	#tab1:checked ~ * #content1 {
+		@apply block opacity-100;
+	}
+
+	#tab1:checked ~ .flex .tab-lab:nth-child(1) {
+		@apply border-b-2 border-primary;
+	}
+
+	#tab2:checked ~ * #content2 {
+		@apply block opacity-100;
+	}
+
+	#tab2:checked ~ .flex .tab-lab:nth-child(2) {
+		@apply border-b-2 border-primary;
+	}
+
+</style>

@@ -1,0 +1,46 @@
+---
+import { Picture } from "astro:assets";
+import Avatar from "../../public/img/avatar.jpg";
+
+const profile = {
+  name: "Bernardo Marozzi.",
+  role: "Full Stack Developer",
+  location: "Santa Fe, Argentina",
+  description: "Soy un desarrollador Full Stack apasionado por el aprendizaje y la tecnología. Me especializo en JavaScript, Node.js y Astro. Busco mejorar mis habilidades y crear aplicaciones eficientes y escalables."
+};
+
+---
+
+<section class="flex flex-col text-center items-center gap-6 sm:items-start sm:text-left">
+
+  <div class="flex flex-col sm:flex-row gap-4 items-center">
+
+    <Picture 
+        src={Avatar}
+        formats={["webp", "avif", "jpeg"]}
+        alt={profile.name}
+        title={profile.name}
+        width={96}
+        height={96}
+        class="size-24 rounded-xl border-2 border-primary mx-auto sm:mx-0"
+    />    
+
+    <div>
+
+      <h1 class="text-xl font-extrabold mb-1 inline-block relative text-white">{profile.name}</h1>
+      
+      <p class="text-primary text-sm mb-2">{profile.role}</p>
+      
+      <p class="text-gray-400 text-sm flex items-center justify-center sm:justify-start">
+        <svg class="-mt-0.5 inline mr-2"fill=none height=14 stroke=currentColor stroke-linecap=round stroke-linejoin=round stroke-width=2 viewBox="0 0 24 24"width=14 xmlns=http://www.w3.org/2000/svg><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx=12 cy=10 r=3></circle></svg>
+        {profile.location}
+      </p>
+      
+    </div>
+    
+  </div>
+  <p class="text-gray-400 text-sm leading-relaxed mt-2">
+    {profile.description}
+  </p>
+
+</section>

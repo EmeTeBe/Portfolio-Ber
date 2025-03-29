@@ -1,0 +1,44 @@
+---
+import '../styles/global.scss';
+
+const { title, description } = Astro.props;
+---
+
+
+<!DOCTYPE html>
+<html lang="es" class="bg-black text-gray-100 font-mono">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width", initial-scale=1.0"/>
+
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="Your Name" />
+
+		<!-- SEO -->
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+
+		<!-- Open Graph (para compartir en redes sociales) -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content="/img/meta.png" />
+		<meta property="og:url" content={ Astro.url }/>
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content="/img/meta.png" />
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="/img/logo.svg"/>
+
+	</head>
+
+	<body class="min-h-[100vh] flex item-center justify-center p-4 md:p-8">
+		<slot />
+	</body>
+
+</html>
