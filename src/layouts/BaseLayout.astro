@@ -1,13 +1,24 @@
 ---
 import '../styles/global.scss';
 
-const { title, description } = Astro.props;
+const seoTitle = 'Portfolio de Bernardo | Full-Stack Developer';
+const seoDescription =  'Desarrollador web apasionado, con un enfoque por el código limpio, eficiente y escalable. Especializado en JavaScript, TypeScript, React y Node.js.';
+const seoKeywords = 'Full Stack Developer, JavaScript, TypeScript, React, Node.js, HTML, CSS, Astro, Portfolio';
+const imgaeUrl = 'https://portfolio-ber.vercel.app/img/bmlogo.png';
+
+
 ---
 
 
 <!DOCTYPE html>
 <html lang="es" class="bg-black text-gray-100 font-mono">
 	<head>
+
+		<!-- Crawler & Robots -->
+		<meta name="robots" content="index, follow" />
+		<meta name="revisit-after" content="7 days" />
+
+		<!-- Meta tags -->
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width", initial-scale=1.0"/>
 
@@ -16,24 +27,25 @@ const { title, description } = Astro.props;
 
 		<!-- SEO -->
 
-		<title>{title}</title>
-		<meta name="description" content={description} />
+		<title>{seoTitle}</title>
+		<meta name="description" content={seoDescription} />
 
 		<!-- Open Graph (para compartir en redes sociales) -->
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
+		<meta property="og:title" content={seoTitle} />
+		<meta property="og:description" content={seoDescription} />
 		<meta property="og:type" content="website" />
-		<meta property="og:image" content="/img/meta.png" />
-		<meta property="og:url" content={ Astro.url }/>
+		<meta property="og:image" content={imgaeUrl} />
+		<meta property="og:url" content="https://portfolio-ber.vercel.app/"/>
+		<meta property="og:site_name" content="Bernardo Marozzi | Portfolio" />
 
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content="/img/meta.png" />
+		<meta name="twitter:title" content={seoTitle} />
+		<meta name="twitter:description" content={seoDescription} />
+		<meta name="twitter:image" content={imgaeUrl} />
 
 		<!-- Favicon -->
-		<link rel="icon" type="image/svg+xml" href="/img/logo.svg"/>
+		<link rel="icon" type="image/png" href="/img/bmlogo.png"/>
 
 	</head>
 
