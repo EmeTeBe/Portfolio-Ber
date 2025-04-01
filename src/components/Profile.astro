@@ -1,6 +1,6 @@
 ---
 import { Picture } from "astro:assets";
-import Avatar from "../../public/img/avatar.jpg";
+import Avatar from "../../public/img/avatar.png";
 
 const profile = {
   name: "Bernardo Marozzi.",
@@ -13,16 +13,14 @@ const profile = {
 
 <section class="flex flex-col text-center items-center gap-6 sm:items-start sm:text-left">
 
-  <div class="flex flex-col sm:flex-row gap-4 items-center">
+  <div class="flex flex-col sm:flex-row gap-6 items-center">
 
     <Picture 
         src={Avatar}
         formats={["webp", "avif", "jpeg"]}
         alt={profile.name}
         title={profile.name}
-        width={96}
-        height={96}
-        class="size-24 rounded-xl border-2 border-primary mx-auto sm:mx-0"
+        class="size-24 rounded-xl border-2 border-primary mx-auto sm:mx-0 object-cover aspect-[1/1]"
     />    
 
     <div>
